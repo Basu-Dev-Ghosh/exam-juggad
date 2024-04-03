@@ -24,7 +24,9 @@ const Suggestions = () => {
         <div className="flex flex-col w-full mt-6">
           {!suggestions ||
             (suggestions.length === 0 && (
-              <p className="text-center text-lg text-white">No papers here</p>
+              <p className="text-center text-lg text-white">
+                No suggestions here
+              </p>
             ))}
           {suggestions &&
             suggestions.map((suggestion: any) => (

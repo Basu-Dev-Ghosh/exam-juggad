@@ -20,7 +20,7 @@ interface HomeState {
   currentQuestionPaperName: string;
   setCurrentQuestionPaperName: (name: string) => void;
   questions: any;
-  getQuestions: () => Promise<void>;
+  getQuestions: (user_email: string | null | undefined) => Promise<void>;
   updateAnswer: (id: number, answer: string) => void;
   createNewSuggestion: (
     name: string,
@@ -84,8 +84,12 @@ export const useHomeStore = create<HomeState>()((set) => ({
   setCurrentQuestionPaperName: (name) =>
     set((state) => ({ currentQuestionPaperName: name })),
   questions: null,
-  getQuestions: async () => {
-    const { data, error } = await supabase.from("questions").select();
+  getQuestions: async (user_email: string | null | undefined) => {
+    if (!user_email) return;
+    const { data, error } = await supabase
+      .from("questions")
+      .select()
+      .eq("user_email", user_email);
     if (error) {
       console.log(error);
     }

@@ -5,14 +5,16 @@ import { useHomeStore } from "@/app/_store/HomeStore";
 import PapersContainer from "../papers/PapersContainer";
 import Paper from "../papers/Paper";
 import Question from "./Question";
+import { useSession } from "next-auth/react";
 
 const QuestionsScreen = () => {
   const [getQuestions, questions] = useHomeStore((state) => [
     state.getQuestions,
     state.questions,
   ]);
+  const { data: session } = useSession();
   useEffect(() => {
-    getQuestions();
+    getQuestions(session?.user?.email);
   }, []);
 
   return (
