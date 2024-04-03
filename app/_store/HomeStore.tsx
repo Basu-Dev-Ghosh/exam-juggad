@@ -15,7 +15,7 @@ interface HomeState {
   saveCurrentQuestionToDB: (questionData: any) => Promise<void>;
   saveQuestionToDB: (questionData: any) => Promise<void>;
   papers: any;
-  getPapers: () => Promise<void>;
+  getPapers: (user_email: string | null | undefined) => Promise<void>;
 
   currentQuestionPaperName: string;
   setCurrentQuestionPaperName: (name: string) => void;
@@ -69,8 +69,12 @@ export const useHomeStore = create<HomeState>()((set) => ({
     console.log(data);
   },
   papers: null,
-  getPapers: async () => {
-    const { data, error } = await supabase.from("papers").select();
+  getPapers: async (user_email: string | null | undefined) => {
+    if (!user_email) return;
+    const { data, error } = await supabase
+      .from("papers")
+      .select()
+      .eq("user_email", user_email);
     if (error) {
       console.log(error);
     }
