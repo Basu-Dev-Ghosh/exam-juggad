@@ -92,7 +92,10 @@ const Question = ({ question }: { question: Question }) => {
           {(question as Question).options &&
             (question as Question).options?.split("@").map((option, index) => {
               return (
-                <p className="flex justify-center items-center text-[.7rem] md:text-[.8rem] text-white mt-2 md:mt-0 mr-4 md:mr-0">
+                <p
+                  key={index}
+                  className="flex justify-center items-center text-[.7rem] md:text-[.8rem] text-white mt-2 md:mt-0 mr-4 md:mr-0"
+                >
                   <span className="w-[18px] h-[18px]  md:w-[21px] md:h-[21px] mr-2 flex justify-center items-center rounded-full bg-black text-xs md:text-sm text-white">
                     {String.fromCharCode(65 + index)}
                   </span>

@@ -79,7 +79,10 @@ const Question = ({
             {(data as MCQQuestion).options &&
               (data as MCQQuestion).options.map((option, index) => {
                 return (
-                  <p className="flex justify-center mt-2 items-center text-[.72em] px-2 md:px-3 md:text-[.8rem] text-white mr-4 md:mr-0">
+                  <p
+                    key={index}
+                    className="flex justify-center mt-2 items-center text-[.72em] px-2 md:px-3 md:text-[.8rem] text-white mr-4 md:mr-0"
+                  >
                     <span className="w-[18px] h-[18px]  md:w-[21px] md:h-[21px] mr-2 flex justify-center items-center rounded-full bg-black text-xs md:text-sm text-white">
                       {String.fromCharCode(65 + index)}
                     </span>

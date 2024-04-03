@@ -26,6 +26,7 @@ const Groups = ({ pdfName }: { pdfName: string }) => {
         Object.keys(currentQuestion).map((category, index) => {
           return (
             <AccordionItem
+              key={index}
               value={category}
               id={category}
               className="box-shadow-group my-2"
