@@ -17,11 +17,11 @@ const Suggestions = () => {
 
   return (
     <PapersContainer>
-      <div className="h-[99%]">
+      <div className="h-[99%] overflow-y-hidden">
         <p className="text-white pb-3 text-2xl text-center capitalize border-b border-dashed">
           Your saved suggestions
         </p>
-        <div className="flex flex-col w-full mt-6">
+        <div className="flex flex-col w-full my-6 scroll-div max-h-[80%] overflow-y-auto">
           {!suggestions ||
             (suggestions.length === 0 && (
               <p className="text-center text-lg text-white">

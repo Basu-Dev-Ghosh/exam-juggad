@@ -19,11 +19,11 @@ const QuestionsScreen = () => {
 
   return (
     <PapersContainer>
-      <div className="h-[99%]">
+      <div className="h-[99%] overflow-y-hidden">
         <p className="text-white pb-3 text-2xl text-center capitalize border-b border-dashed">
           Your saved questions
         </p>
-        <div className="flex flex-col w-full mt-6">
+        <div className="flex flex-col w-full mt-6 mb-12 space-y-3 max-h-[80%] overflow-y-auto scroll-div">
           {!questions ||
             (questions.length === 0 && (
               <p className="text-center text-lg text-white">

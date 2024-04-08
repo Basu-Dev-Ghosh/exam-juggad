@@ -24,6 +24,13 @@ import {
   DrawerTrigger,
 } from "@/components/ui/drawer";
 
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
+
 const DashboardSidebar = () => {
   const [screen, changeScreen, changeBackground] = useHomeStore((state) => [
     state.screen,
@@ -36,13 +43,22 @@ const DashboardSidebar = () => {
       <Drawer>
         <DrawerTrigger>
           {" "}
-          <div className="group border-b border-slate-400 flex justify-center  mt-6 h-[50px]  w-[40px] transition-all duration-200 ease-in-out cursor-pointer">
-            <LuWallpaper
-              size={26}
-              color="#fff"
-              className="group-hover:scale-95 "
-            />
-          </div>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger asChild>
+                <div className="group border-b border-slate-400 flex justify-center  mt-6 h-[50px]  w-[40px] transition-all duration-200 ease-in-out cursor-pointer">
+                  <LuWallpaper
+                    size={26}
+                    color="#fff"
+                    className="group-hover:scale-95 "
+                  />
+                </div>
+              </TooltipTrigger>
+              <TooltipContent>
+                <p>Change background</p>
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
         </DrawerTrigger>
         <DrawerContent className="h-[50vh] drawer-content">
           <DrawerHeader>
@@ -103,109 +119,158 @@ const DashboardSidebar = () => {
           }`}
         />
       </div> */}
-      <div
-        onClick={() => changeScreen("scan")}
-        className={`group flex justify-center items-center mt-6 h-[40px] ${
-          screen === "scan" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
-        } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
-      >
-        <MdOutlineDocumentScanner
-          size={24}
-          color="#fff"
-          className={` ${screen === "scan" ? "hidden" : "group-hover:hidden"}`}
-        />
-        <MdDocumentScanner
-          size={24}
-          color="#fff"
-          className={` group-hover:block ${
-            screen === "scan" ? "block" : "hidden"
-          }`}
-        />
-      </div>
-      <div
-        onClick={() => changeScreen("suggestion")}
-        className={`group flex justify-center items-center mt-6 h-[40px] ${
-          screen === "suggestion" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
-        } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
-      >
-        <TbRobot
-          size={24}
-          color="#fff"
-          className={` ${
-            screen === "suggestion" ? "hidden" : "group-hover:hidden"
-          }`}
-        />
-        <TbRobot
-          size={24}
-          color="#fff"
-          className={` group-hover:block ${
-            screen === "suggestion" ? "block" : "hidden"
-          }`}
-        />
-      </div>
-      <div
-        onClick={() => changeScreen("papers")}
-        className={`group flex justify-center items-center mt-6 h-[40px] ${
-          screen === "scan" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
-        } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
-      >
-        <IoDocumentTextOutline
-          size={24}
-          color="#fff"
-          className={` ${
-            screen === "papers" ? "hidden" : "group-hover:hidden"
-          }`}
-        />
-        <IoDocumentText
-          size={24}
-          color="#fff"
-          className={` group-hover:block ${
-            screen === "papers" ? "block" : "hidden"
-          }`}
-        />
-      </div>
-      <div
-        onClick={() => changeScreen("questions")}
-        className={`group flex justify-center items-center mt-6 h-[40px] ${
-          screen === "questions" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
-        } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
-      >
-        <BsQuestionCircle
-          size={24}
-          color="#fff"
-          className={` ${
-            screen === "questions" ? "hidden" : "group-hover:hidden"
-          }`}
-        />
-        <BsQuestionCircleFill
-          size={24}
-          color="#fff"
-          className={` group-hover:block ${
-            screen === "questions" ? "block" : "hidden"
-          }`}
-        />
-      </div>
-      <div
-        onClick={() => changeScreen("suggestions")}
-        className={`group flex justify-center items-center mt-6 h-[40px] ${
-          screen === "suggestions" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
-        } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
-      >
-        <GiBulb
-          size={24}
-          color="#fff"
-          className={` ${
-            screen === "suggestions" ? "hidden" : "group-hover:hidden"
-          }`}
-        />
-        <GiBulb
-          size={24}
-          color="#fff"
-          className={` group-hover:block ${
-            screen === "suggestions" ? "block" : "hidden"
-          }`}
-        />
-      </div>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              onClick={() => changeScreen("scan")}
+              className={`group flex justify-center items-center mt-6 h-[40px] ${
+                screen === "scan" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
+              } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
+            >
+              <MdOutlineDocumentScanner
+                size={24}
+                color="#fff"
+                className={` ${
+                  screen === "scan" ? "hidden" : "group-hover:hidden"
+                }`}
+              />
+              <MdDocumentScanner
+                size={24}
+                color="#fff"
+                className={` group-hover:block ${
+                  screen === "scan" ? "block" : "hidden"
+                }`}
+              />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Get AI Answers</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              onClick={() => changeScreen("suggestion")}
+              className={`group flex justify-center items-center mt-6 h-[40px] ${
+                screen === "suggestion" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
+              } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
+            >
+              <TbRobot
+                size={24}
+                color="#fff"
+                className={` ${
+                  screen === "suggestion" ? "hidden" : "group-hover:hidden"
+                }`}
+              />
+              <TbRobot
+                size={24}
+                color="#fff"
+                className={` group-hover:block ${
+                  screen === "suggestion" ? "block" : "hidden"
+                }`}
+              />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>Get AI Suggestion</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              onClick={() => changeScreen("papers")}
+              className={`group flex justify-center items-center mt-6 h-[40px] ${
+                screen === "scan" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
+              } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
+            >
+              <IoDocumentTextOutline
+                size={24}
+                color="#fff"
+                className={` ${
+                  screen === "papers" ? "hidden" : "group-hover:hidden"
+                }`}
+              />
+              <IoDocumentText
+                size={24}
+                color="#fff"
+                className={` group-hover:block ${
+                  screen === "papers" ? "block" : "hidden"
+                }`}
+              />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>My Saved Papers</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              onClick={() => changeScreen("questions")}
+              className={`group flex justify-center items-center mt-6 h-[40px] ${
+                screen === "questions" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
+              } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
+            >
+              <BsQuestionCircle
+                size={24}
+                color="#fff"
+                className={` ${
+                  screen === "questions" ? "hidden" : "group-hover:hidden"
+                }`}
+              />
+              <BsQuestionCircleFill
+                size={24}
+                color="#fff"
+                className={` group-hover:block ${
+                  screen === "questions" ? "block" : "hidden"
+                }`}
+              />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>My Saved Questions</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <div
+              onClick={() => changeScreen("suggestions")}
+              className={`group flex justify-center items-center mt-6 h-[40px] ${
+                screen === "suggestions" ? "bg-[#5A5381]" : "hover:bg-[#5A5381]"
+              } w-[40px] rounded-xl transition-all duration-200 ease-in-out cursor-pointer`}
+            >
+              <GiBulb
+                size={24}
+                color="#fff"
+                className={` ${
+                  screen === "suggestions" ? "hidden" : "group-hover:hidden"
+                }`}
+              />
+              <GiBulb
+                size={24}
+                color="#fff"
+                className={` group-hover:block ${
+                  screen === "suggestions" ? "block" : "hidden"
+                }`}
+              />
+            </div>
+          </TooltipTrigger>
+          <TooltipContent>
+            <p>My Saved Suggestions</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     </div>
   );
 };
