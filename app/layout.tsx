@@ -4,7 +4,7 @@ import "./globals.css";
 import NextAuthProvider from "./_components/session/NextAuthProvider";
 import { Toaster } from "@/components/ui/toaster";
 const inter = Inter({ subsets: ["latin"] });
-
+import { Analytics } from "@vercel/analytics/react";
 export const metadata: Metadata = {
   title: "Exam Juggad",
   description:
@@ -21,6 +21,7 @@ export default function RootLayout({
       <body className={`${inter.className}`}>
         <NextAuthProvider>{children}</NextAuthProvider>
         <Toaster />
+        <Analytics />
       </body>
     </html>
   );
